@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, Drawer } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
+import Link from 'next/link'; // Import Link from next/link
 
 function NavigationBar() {
   const [open, setOpen] = useState(false);
@@ -25,14 +26,16 @@ function NavigationBar() {
           <MenuOutlined style={{ fontSize: '24px', color: 'black' }} />
         </Button>
 
-        {/* Logo next to the hamburger icon */}
+        {/* Logo wrapped in Link for navigation to the home page */}
         <div className="ml-2">
-          <Image
-            src="/sardar-travels-logo-2022.jpg"
-            alt="Sardar Travels Logo"
-            width={100}
-            height={50}
-          />
+          <Link href="/" passHref>
+            <Image
+              src="/sardar-travels-logo-2022.jpg"
+              alt="Sardar Travels Logo"
+              width={100}
+              height={50}
+            />
+          </Link>
         </div>
 
         {/* Main Navigation Links for larger screens */}
@@ -48,10 +51,6 @@ function NavigationBar() {
           >
             +91 9170475552
           </a>
-
-
-
-
           <a href="https://wa.me/917696666640" className="text-white py-2 font-bold px-2 rounded bg-blue-900 hover:bg-yellow-900">WhatsApp</a>
         </div>
       </div>

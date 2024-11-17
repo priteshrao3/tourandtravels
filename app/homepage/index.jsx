@@ -10,6 +10,7 @@ import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Faq from './faq';
 import Footer from './footer';
+import Link from 'next/link';
 
 
 function VanSearchPage() {
@@ -24,8 +25,6 @@ function VanSearchPage() {
     category: '',
     time: ''
   });
-
-
 
 
   const [showPopup, setShowPopup] = useState(false);
@@ -144,16 +143,18 @@ function VanSearchPage() {
     setIsModalOpen(false);
   };
 
+
   return (
     <div className="text-black">
 
       {/* Tabs */}
-      <div className="bg-blue-500 p-4 pt-14">
-        <div className="flex justify-center gap-4">
+      <div className="bg-blue-500 md:p-4 md:pt-14 mt-5">
+        <div className="flex flex-wrap justify-center gap-4">
           {['One Way', 'Local', 'Tour', 'Round Trip', 'Tempo Traveller'].map(tab => (
             <button
               key={tab}
-              className={`px-4 py-2 rounded-lg ${activeTab === tab ? 'bg-blue-600 text-white' : 'bg-white text-black'}`}
+              className={`px-4 py-2 rounded-lg ${activeTab === tab ? 'bg-blue-600 text-white' : 'bg-white text-black'} 
+                    sm:px-6 sm:py-3 md:px-8 md:py-4`}
               onClick={() => {
                 setActiveTab(tab);
                 setSearchParams({
@@ -171,6 +172,7 @@ function VanSearchPage() {
           ))}
         </div>
       </div>
+
 
 
       {/* Search Filters */}
@@ -408,22 +410,6 @@ function VanSearchPage() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* Full-Screen Modal for displaying filtered vans */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-white z-50">
@@ -574,11 +560,6 @@ function VanSearchPage() {
             {/* Search Filters */}
 
 
-
-
-
-
-
             {/* Heading for the filtered vans route */}
             {filteredVans.length > 0 && (
               <div className="text-center py-5 pt-10 bg-blue-100">
@@ -595,8 +576,13 @@ function VanSearchPage() {
                   <div key={van.id} className="flex flex-col md:flex-row w-full p-4 bg-white shadow-lg rounded-lg">
                     {/* Section 1: Van Image */}
                     <div className="taxi-list-left flex-shrink-0 w-full md:w-1/6 flex justify-center mb-4 md:mb-0">
-                      <img src="https://sardartravels.in/uploads/cab//1702475754Maruti-Dzire--2.png" alt={van.van_name} className="w-full h-auto rounded-md" />
+                      <img
+                        src={`https://travelboking.pythonanywhere.com${van.image}`}
+                        alt={van.van_name}
+                        className="w-full h-auto rounded-md"
+                      />
                     </div>
+
 
                     {/* Section 2: Van Type */}
                     <div className="taxi-type flex items-center justify-center w-full md:w-1/6 mb-4 md:mb-0">
@@ -625,120 +611,31 @@ function VanSearchPage() {
                     </div>
 
                     {/* Section 6: Select Van Button */}
+
                     <div className="taxi-cta flex items-center justify-center w-full md:w-1/6 mb-4 md:mb-0">
-                      <a
-                        onClick={() => handleSelectVan(van)}
+                      <Link
+                        href={{
+                          pathname: '/vanbooking',
+                          query: {
+                            from_city: van.from_city,
+                            to_city: van.to_city,
+                            van_name: van.van_name,
+                            fare: van.fare,
+                          },
+                        }}
                         className="cursor-pointer btn btn-yellow bg-yellow-500 text-white py-2 px-4 rounded-lg"
                       >
                         Select Van
-                      </a>
+                      </Link>
                     </div>
+
+
                   </div>
                 ))}
               </div>
             ) : (
               <p className="font-bold text-3xl text-center p-5 text-red-700">No vans available for the selected criteria.</p>
             )}
-
-            {/* Popup Form */}
-            {showPopup && selectedVan && (
-              <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-                <div className="bg-white p-6 rounded-lg shadow-lg md:w-[30em]">
-                  <h2 className="text-2xl font-bold mb-4">Van Booking Form</h2>
-
-                  {/* Van Details */}
-                  <p><strong>Going From:</strong> {filteredVans[0].from_city}</p>
-                  <p><strong>Going To:</strong> {filteredVans[0].to_city}</p>
-                  <p><strong>Selected Car:</strong> {selectedVan.van_name}</p>
-                  <p><strong>Price:</strong> ₹{selectedVan.fare} Inc. of Taxes*</p>
-
-                  {/* Form Fields */}
-                  <form>
-                    <div className="mb-3">
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Your Name</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">Mobile Number</label>
-                      <input
-                        type="tel"
-                        id="mobile"
-                        name="mobile"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="date" className="block text-sm font-medium text-gray-700">Pick Up Date</label>
-                      <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="time" className="block text-sm font-medium text-gray-700">Pick Up Time</label>
-                      <input
-                        type="time"
-                        id="time"
-                        name="time"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="pickup_address" className="block text-sm font-medium text-gray-700">Pick Up Address</label>
-                      <input
-                        type="text"
-                        id="pickup_address"
-                        name="pickup_address"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email (Optional)</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        className="w-full p-1.5 mt-1 border border-gray-300 rounded-lg"
-                      ></textarea>
-                    </div>
-
-                    {/* Submit Button */}
-                    <button type="submit" className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg">Submit</button>
-                  </form>
-
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setShowPopup(false)}
-                    className="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg w-full"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            )}
-
-
-
 
             <div className='mt-5'>
               <Faq />

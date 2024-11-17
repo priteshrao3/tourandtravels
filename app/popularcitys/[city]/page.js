@@ -1,17 +1,17 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavigationBar from '@/app/homepage/navigationbar';
-import { use } from 'react';
 
 export default function Routes({ params }) {
-  const { city } = use(params);
+  // Unwrap params using React.use() as required by the current Next.js version
+  const { city } = React.use(params); 
 
   const [vans, setVans] = useState([]);
   const [filteredVans, setFilteredVans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRoute, setSelectedRoute] = useState(null);
-  const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (city) {
@@ -55,36 +55,61 @@ export default function Routes({ params }) {
     return isNaN(formattedDate.getTime()) ? 'Invalid Date' : formattedDate.toLocaleString();
   };
 
+  // Group vans by category
+  const groupVansByCategory = () => {
+    return vans.reduce((categories, van) => {
+      if (!categories[van.category]) {
+        categories[van.category] = [];
+      }
+      categories[van.category].push(van);
+      return categories;
+    }, {});
+  };
+
   if (!city) return <p>Loading city data...</p>;
 
+  const categorizedVans = groupVansByCategory();
+
   return (
-    <div className="text-black"> {/* Apply text-black to all content */}
+    <div className="text-black">
       <NavigationBar />
 
       {loading ? (
         <p>Loading routes...</p>
       ) : (
         <div>
-          {/* Display available routes */}
-          {vans.length > 0 ? (
+          {/* Display available routes categorized by type in a grid of 3 cards */}
+          {Object.keys(categorizedVans).length > 0 ? (
             <div>
-              <h3>Available Routes from {city}</h3>
-              <ul>
-                {vans
-                  .filter((van) => van.from_city === city)
-                  .map((van) => (
-                    <li key={van.id}>
-                      <button
-                        onClick={() =>
-                          handleRouteClick(van.from_city, van.to_city)
-                        }
-                        className="text-blue-500 hover:underline"
+              {Object.keys(categorizedVans).map((category) => (
+                <div key={category} className="mb-8">
+                  <h3 className="text-3xl font-bold mb-4">{category} from {city}</h3>
+                  
+                  {/* Grid of routes for each category */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {categorizedVans[category].map((van) => (
+                      <div
+                        key={van.id}
+                        className="border rounded-lg p-4 shadow-lg cursor-pointer"
+                        onClick={() => handleRouteClick(van.from_city, van.to_city)}
                       >
-                        {van.from_city} to {van.to_city}
-                      </button>
-                    </li>
-                  ))}
-              </ul>
+                        <h4 className="text-xl font-semibold mb-2">
+                          {van.from_city} to {van.to_city}
+                        </h4>
+                        <p className="text-sm">
+                          <strong>Category:</strong> {van.category}
+                        </p>
+                        <p className="text-sm">
+                          <strong>Seats:</strong> {van.seats}
+                        </p>
+                        <p className="text-sm">
+                          <strong>Departure:</strong> {formatDate(van.departure_time)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
             <p>No routes available from {city}.</p>
