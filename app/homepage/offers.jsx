@@ -27,10 +27,10 @@ function Offers() {
   ];
 
   return (
-    <div className="py-12 md:px-20 bg-gray-100">
+    <div className="md:py-12 md:px-20 bg-gray-100">
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold text-orange-400">Exclusive Offers Just for You</h2>
-        <p className="text-lg text-black mt-4 md:px-20">
+        <h2 className="md:text-4xl text-2xl font-bold text-orange-400">Exclusive Offers Just for You</h2>
+        <p className="md:text-lg text-black mt-4 md:px-20">
           Take advantage of our limited-time offers to make your travels even more affordable and enjoyable. Explore these amazing deals now!
         </p>
       </div>

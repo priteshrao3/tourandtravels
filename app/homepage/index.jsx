@@ -148,7 +148,7 @@ function VanSearchPage() {
     <div className="text-black">
 
       {/* Tabs */}
-      <div className="bg-blue-500 md:p-4 md:pt-14 mt-5">
+      <div className="bg-blue-500 md:p-4 py-5 md:pt-14">
         <div className="flex flex-wrap justify-center gap-4">
           {['One Way', 'Local', 'Tour', 'Round Trip', 'Tempo Traveller'].map(tab => (
             <button
@@ -286,19 +286,19 @@ function VanSearchPage() {
 
 
       {/* One Way Popular Routes */}
-      <div className="flex justify-center bg-blue-100 pb-10">
+      <div className="flex justify-center bg-blue-100 md:pb-10 pb-5">
         <div className="text-center">
-          <h2 className="text-4xl font-bold py-4 text-orange-500 mt-5">One Way Popular Routes</h2>
+          <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">One Way Popular Routes</h2>
           <div className="flex flex-wrap gap-6 justify-center mt-5">
             {getRoutes().map(route => (
               <div
                 key={route}
-                className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
+                className="w-full sm:w-80 lg:w-96 md:p-6 p-2 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                 onClick={() => filterVansByRoute(route)}
               >
-                <h3 className="text-xl font-semibold mb-2 capitalize text-blue-900">{route}</h3>
-                <p className="text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                <p className="text-xl text-blue-900">
+                <h3 className="md:text-xl font-semibold mb-2 capitalize text-blue-900">{route}</h3>
+                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                <p className="md:text-xl text-blue-900">
                   ₹{vans.find(van => `${van.from_city} to ${van.to_city}` === route)?.fare || 'N/A'}
                 </p>
               </div>
@@ -309,9 +309,9 @@ function VanSearchPage() {
 
 
       {/* Popular Taxi Tour Packages */}
-      <div className="flex justify-center bg-blue-100 pb-10">
+      <div className="flex justify-center bg-blue-100 md:pb-10 pb-5">
         <div className="text-center">
-          <h2 className="text-4xl font-bold py-4 text-orange-500 mt-5">Popular Taxi Tour Packages</h2>
+          <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">Popular Taxi Tour Packages</h2>
           <div className="flex flex-wrap gap-6 justify-center mt-5">
             {getTourPackages().map(van => (
               <div
@@ -319,9 +319,9 @@ function VanSearchPage() {
                 className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                 onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
               >
-                <h3 className="text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
-                <p className="text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                <p className="text-2xl text-blue-900">₹{van.fare}</p>
+                <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
               </div>
             ))}
 
@@ -331,9 +331,9 @@ function VanSearchPage() {
 
 
       {/* Tempo Travler Popular Routes */}
-      <div className="flex justify-center bg-blue-100 pb-10">
+      <div className="flex justify-center bg-blue-100 md:pb-10 pb-5">
         <div className="text-center">
-          <h2 className="text-4xl font-bold py-4 text-orange-500 mt-5">Tempo Travler Popular Routes </h2>
+          <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">Tempo Travler Popular Routes </h2>
           <div className="flex flex-wrap gap-6 justify-center mt-5">
             {getTempoTravler().map(van => (
               <div
@@ -341,9 +341,9 @@ function VanSearchPage() {
                 className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                 onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
               >
-                <h3 className="text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
-                <p className="text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                <p className="text-2xl text-blue-900">₹{van.fare}</p>
+                <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
               </div>
             ))}
           </div>
@@ -352,9 +352,9 @@ function VanSearchPage() {
 
 
       {/* Force Urbania Popular Routes  */}
-      <div className="flex justify-center bg-blue-100 pb-10">
+      <div className="flex justify-center bg-blue-100 md:pb-10 pb-5">
         <div className="text-center">
-          <h2 className="text-4xl font-bold py-4 text-orange-500 mt-5">Force Urbania Popular Routes</h2>
+          <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">Force Urbania Popular Routes</h2>
           <div className="flex flex-wrap gap-6 justify-center mt-5">
             {getForceUrbania().map(van => (
               <div
@@ -362,9 +362,9 @@ function VanSearchPage() {
                 className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                 onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
               >
-                <h3 className="text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
-                <p className="text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                <p className="text-2xl text-blue-900">₹{van.fare}</p>
+                <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
               </div>
             ))}
           </div>
@@ -373,32 +373,43 @@ function VanSearchPage() {
 
 
       {/* getLuxuryCabs */}
-      <div className="flex justify-center bg-blue-100 pb-10">
-        <div className="text-center max-w-screen-xl">
-          <h2 className="text-4xl font-bold py-4 text-orange-500 mt-5">Our Luxury Cabs</h2>
-          <p className='text-black'>The Definitive Collection of Chauffeur-Driven Elegance: Unparalleled Luxury, Comfort, and Professionalism Await You</p>
+      <div className="flex justify-center bg-blue-100 pb-5 md:pb-10">
+        <div className="text-center md:w-[90em] w-[25em] px-4 md:px-6">
+          <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">
+            Our Luxury Cabs
+          </h2>
+          <p className="text-black">
+            The Definitive Collection of Chauffeur-Driven Elegance Unparalleled Luxury, Comfort, and Professionalism Await You
+          </p>
 
           {/* Swiper Container */}
           <Swiper
-            spaceBetween={20}         // Space between items
-            slidesPerView={4}         // Show 4 items per slide
-            loop={true}               // Loop through the items
+            spaceBetween={20}
+            slidesPerView={1}  // Default to 1 slide on mobile
+            loop={true}
             autoplay={{
-              delay: 3000,            // Delay between transitions
-              disableOnInteraction: false, // Allow autoplay even after user interaction
+              delay: 3000,
+              disableOnInteraction: false,
             }}
-            navigation={true}        // Enable navigation (next/prev buttons)
-            modules={[Navigation, Autoplay]} // Import necessary modules
+            navigation={true}
+            modules={[Navigation, Autoplay]}
             className="mt-5"
+            breakpoints={{
+              640: {
+                slidesPerView: 4,  // For larger screens (640px and up), show 4 slides
+              },
+            }}
           >
             {/* Swiper Slides */}
-            {getLuxuryCabs().map(van => (
+            {getLuxuryCabs().map((van) => (
               <SwiperSlide key={van.id}>
                 <div
-                  className="p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
+                  className="p-4 md:p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center" // Ensure padding is applied correctly
                   onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
                 >
-                  <h3 className="text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                  <h3 className="text-2xl font-semibold mb-2 capitalize text-blue-900">
+                    {van.from_city} to {van.to_city}
+                  </h3>
                   <p className="text-lg font-medium mb-2 text-blue-900">Start Fare</p>
                   <p className="text-2xl text-blue-900">₹{van.fare}</p>
                 </div>
@@ -425,12 +436,13 @@ function VanSearchPage() {
             <NavigationBar />
 
             {/* Tabs */}
-            <div className="bg-blue-500 p-4 pt-14">
-              <div className="flex justify-center gap-4">
+            <div className="bg-blue-500 md:p-4 py-5 md:pt-14">
+              <div className="flex flex-wrap justify-center gap-4">
                 {['One Way', 'Local', 'Tour', 'Round Trip', 'Tempo Traveller'].map(tab => (
                   <button
                     key={tab}
-                    className={`px-4 py-2 rounded-lg ${activeTab === tab ? 'bg-blue-600 text-white' : 'bg-white text-black'}`}
+                    className={`px-4 py-2 rounded-lg ${activeTab === tab ? 'bg-blue-600 text-white' : 'bg-white text-black'} 
+                    sm:px-6 sm:py-3 md:px-8 md:py-4`}
                     onClick={() => {
                       setActiveTab(tab);
                       setSearchParams({
@@ -563,7 +575,7 @@ function VanSearchPage() {
             {/* Heading for the filtered vans route */}
             {filteredVans.length > 0 && (
               <div className="text-center py-5 pt-10 bg-blue-100">
-                <h2 className="text-4xl text-orange-400 font-bold capitalize">
+                <h2 className="md:text-4xl text-2xl text-orange-400 font-bold capitalize">
                   {filteredVans[0].from_city} To: {filteredVans[0].to_city}
                 </h2>
               </div>
@@ -573,7 +585,7 @@ function VanSearchPage() {
             {filteredVans.length > 0 ? (
               <div className="flex flex-wrap gap-6 md:px-40 bg-blue-100 py-5">
                 {filteredVans.map((van) => (
-                  <div key={van.id} className="flex flex-col md:flex-row w-full p-4 bg-white shadow-lg rounded-lg">
+                  <div key={van.id} className="md:flex flex-col md:flex-row w-full p-4 bg-white shadow-lg rounded-lg">
                     {/* Section 1: Van Image */}
                     <div className="taxi-list-left flex-shrink-0 w-full md:w-1/6 flex justify-center mb-4 md:mb-0">
                       <img

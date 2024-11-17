@@ -11,7 +11,7 @@ function Faq() {
   };
 
   return (
-    <div className="container mx-auto px-20 py-8">
+    <div className="container mx-auto md:px-20 px-2 py-8">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-semibold text-orange-500">Frequently Asked Questions (FAQ)</h2>
       </div>

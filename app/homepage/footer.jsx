@@ -5,7 +5,7 @@ export default function Footer() {
             <section className="section bg-blue-500 footer-cta py-5">
                 <div className="container">
                     <div className="title-block text-center text-white">
-                        <h2 className="text-4xl p-1">We’re here for you 24/7!</h2>
+                        <h2 className="md:text-4xl text-3xl p-1">We’re here for you 24/7!</h2>
                         <div className="heading-1 text-2xl">Give us a call anytime:</div>
                         <div className="heading-1 mt-2 text-xl">
                             <a href="tel:+91-76966-66640" className="text-yellow-400 hover:text-yellow-500">+91-76966-66640</a>

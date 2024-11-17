@@ -9,7 +9,7 @@ import Testimonials from "./homepage/testomonials";
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <NavigationBar />
 
       <IndexPage />

@@ -2,10 +2,10 @@ import React from 'react';
 
 function Features() {
   return (
-    <div className="container mx-auto p-6 md:px-28">
-      <h1 className="text-3xl font-bold text-center mb-8 text-orange-500">Features & Benefits of Taxi-Booking</h1>
+    <div className="container mx-auto md:p-6 p-2 md:px-28">
+      <h1 className="md:text-3xl text-2xl font-bold text-center mb-8 text-orange-500">Features & Benefits of Taxi-Booking</h1>
       
-      <p className="text-lg mb-6 text-black text-center px-20">
+      <p className="text-lg mb-6 text-black text-center md:px-20 px-2">
         In today s emerging tech world, human life is getting multiple services at the doorstep—from online food delivery to taxi booking through online platforms. People prefer services that require less interaction and can be managed directly from their smart devices.
       </p>
 

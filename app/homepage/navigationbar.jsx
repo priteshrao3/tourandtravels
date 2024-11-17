@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, Drawer } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
-import Link from 'next/link'; // Import Link from next/link
+import { MenuOutlined, CloseOutlined, RightOutlined, CarOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 function NavigationBar() {
   const [open, setOpen] = useState(false);
@@ -57,22 +57,78 @@ function NavigationBar() {
 
       {/* Drawer component for mobile navigation */}
       <Drawer
-        title="Navigation"
-        placement="left" // Ensure placement is set to 'left'
-        closable
         onClose={onClose}
         open={open}
-        width={250}  // You can adjust the width here
-        styles={{ body: { padding: '10px' } }}  // Replace bodyStyle with styles.body
+        closable={false} // Disable the default close button
+        width={280} // Decrease the width of the drawer
+        title={
+          <div className="flex justify-between items-center">
+            {/* Logo on the left */}
+            <div className="flex items-center">
+              <Image
+                src="/sardar-travels-logo-2022.jpg"
+                alt="Sardar Travels Logo"
+                width={200}
+                height={50}
+              />
+            </div>
+            {/* Close button on the right */}
+            <Button
+              className="text-black"
+              type="text"
+              icon={<CloseOutlined style={{ fontSize: '24px' }} />}
+              onClick={onClose}
+            />
+          </div>
+        }
+        placement="left" // Make the drawer open from the left
       >
+        {/* Drawer Menu Items with Arrow Icon */}
         <div className="space-y-4">
-          <a href="/popularcitys" className="text-black hover:text-blue-900">Popular Cities</a>
-          <a href="#" className="text-black hover:text-blue-900">Local Cab</a>
-          <a href="#" className="text-black hover:text-blue-900">Tour Packages</a>
-          <a href="#" className="text-black hover:text-blue-900">Tempo Traveller</a>
-          <a href="#" className="text-black hover:text-blue-900">Force Urbania</a>
-          <a href="tel:+917696666640" className="text-black hover:text-blue-900">+91 9170475552</a>
-          <a href="https://wa.me/917696666640" className="text-green-800 hover:text-blue-900">WhatsApp</a>
+          <a href="/" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Home <RightOutlined className="ml-auto" />
+          </a>
+          <a href="/popularcitys" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Popular Cities <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Local Cab <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Tour Packages <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Tempo Traveller <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Force Urbania <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Our cabs <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            Review <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            blog <RightOutlined className="ml-auto" />
+          </a>
+          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+            FAQ <RightOutlined className="ml-auto" />
+          </a>
+          <a
+            href="tel:+917696666640"
+            className="flex items-center text-black hover:text-blue-900 font-bold"
+          >
+            +91 9170475552 <RightOutlined className="ml-auto" />
+          </a>
+          <a
+            href="https://wa.me/917696666640"
+            className="flex items-center p-2 text-white font-bold px-2 rounded bg-yellow-400 hover:bg-yellow-900"
+          >
+            <CarOutlined className="mr-2" /> {/* Taxi icon on the left */}
+            Book Taxi
+            <RightOutlined className="ml-auto" /> {/* Arrow icon on the right */}
+          </a>
         </div>
       </Drawer>
     </nav>

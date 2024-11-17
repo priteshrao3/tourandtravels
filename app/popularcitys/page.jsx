@@ -32,15 +32,15 @@ export default function CityList() {
   return (
     <div className='bg-white'>
       <NavigationBar />
-      <h2 className="text-5xl font-bold p-10 text-center text-white bg-blue-500">
+      <h2 className="md:text-5xl text-2xl font-bold md:p-10 p-2 text-center text-white bg-blue-500">
         Popular Cities
       </h2>
 
-      <h2 className='text-black text-3xl text-center p-5 font-bold'>Top Taxi Services by City</h2>
+      <h2 className='text-black md:text-3xl text-2xl text-center p-5 font-bold'>Top Taxi Services by City</h2>
       {loading ? (
         <p>Loading cities...</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:p-5 md:px-28 px-2">
           {cities.map((city) => (
             <Link
               key={city.id}
@@ -59,12 +59,12 @@ export default function CityList() {
               <h3 className="text-blue-500 hover:underline text-2xl font-semibold mb-2 text-center">
                 {city.name}
               </h3>
-
               {/* Explore Services Button */}
               <div className="px-5 py-2 bg-yellow-500 text-white text-xl rounded-lg hover:bg-blue-600 transition-colors">
                 Explore Services
               </div>
             </Link>
+
           ))}
         </div>
       )}
