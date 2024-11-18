@@ -41,10 +41,10 @@ function NavigationBar() {
         {/* Main Navigation Links for larger screens */}
         <div className="hidden md:flex space-x-6 ml-auto md:pr-12">
           <a href="/popularcitys" className="text-black hover:text-blue-900 mt-2 font-bold">Popular Cities</a>
-          <a href="#" className="text-black hover:text-blue-900 mt-2 font-bold">Local Cab</a>
-          <a href="#" className="text-black hover:text-blue-900 mt-2 font-bold">Tour Packages</a>
-          <a href="#" className="text-black hover:text-blue-900 mt-2 font-bold">Tempo Traveller</a>
-          <a href="#" className="text-black hover:text-blue-900 mt-2 font-bold">Force Urbania</a>
+          <a href="/localcabs" className="text-black hover:text-blue-900 mt-2 font-bold">Local Cab</a>
+          <a href="/tourpackages" className="text-black hover:text-blue-900 mt-2 font-bold">Tour Packages</a>
+          <a href="/tempotraveller" className="text-black hover:text-blue-900 mt-2 font-bold">Tempo Traveller</a>
+          <a href="/forceurbania" className="text-black hover:text-blue-900 mt-2 font-bold">Force Urbania</a>
           <a
             href="tel:+917696666640"
             className="text-black bg-yellow-400 py-2 hover:bg-blue-900 font-bold hover:text-white px-2 rounded transition duration-300"
@@ -91,16 +91,16 @@ function NavigationBar() {
           <a href="/popularcitys" className="flex items-center text-black hover:text-blue-900 font-bold">
             Popular Cities <RightOutlined className="ml-auto" />
           </a>
-          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+          <a href="/localcabs" className="flex items-center text-black hover:text-blue-900 font-bold">
             Local Cab <RightOutlined className="ml-auto" />
           </a>
-          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+          <a href="/tourpackages" className="flex items-center text-black hover:text-blue-900 font-bold">
             Tour Packages <RightOutlined className="ml-auto" />
           </a>
-          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+          <a href="/tempotraveller" className="flex items-center text-black hover:text-blue-900 font-bold">
             Tempo Traveller <RightOutlined className="ml-auto" />
           </a>
-          <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
+          <a href="/forceurbania" className="flex items-center text-black hover:text-blue-900 font-bold">
             Force Urbania <RightOutlined className="ml-auto" />
           </a>
           <a href="#" className="flex items-center text-black hover:text-blue-900 font-bold">
