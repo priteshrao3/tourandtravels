@@ -1,4 +1,4 @@
-import IndexPage from "./homepage";
+import IndexPage from "./homepage/page";
 import FAQ from "./homepage/faq";
 import Features from "./homepage/features";
 import Footer from "./homepage/footer";
