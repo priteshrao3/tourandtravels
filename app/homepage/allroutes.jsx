@@ -10,6 +10,7 @@ import 'swiper/css/autoplay';
 import { Autoplay, Navigation } from 'swiper/modules';
 import VanSearchPage from './page';
 import SearchPage from './searchpage';
+import LuxuryCabsPage from './luxurycabs';
 
 function AllRoutesPage() {
     const [vans, setVans] = useState([]);
@@ -126,7 +127,9 @@ function AllRoutesPage() {
             {/* One Way Popular Routes */}
             <div className="flex justify-center bg-blue-100 md:pb-10 pb-5">
                 <div className="text-center">
-                    <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">One Way Popular Routes</h2>
+                    <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">
+                        One Way Popular Routes
+                    </h2>
                     <div className="flex flex-wrap gap-6 justify-center mt-5">
                         {getRoutes().map(route => (
                             <div
@@ -134,16 +137,26 @@ function AllRoutesPage() {
                                 className="w-full sm:w-80 lg:w-96 md:p-6 p-2 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                                 onClick={() => filterVansByRoute(route)}
                             >
-                                <h3 className="md:text-xl font-semibold mb-2 capitalize text-blue-900">{route}</h3>
-                                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                                <p className="md:text-xl text-blue-900">
-                                    ₹{vans.find(van => `${van.from_city} to ${van.to_city}` === route)?.fare || 'N/A'}
-                                </p>
+                                {/* Smaller Image inside the route card */}
+                                <img
+                                    src="/1702475754Maruti-Dzire--2.png"
+                                    alt="Maruti Dzire"
+                                    className="w-32 h-24 mx-auto object-contain rounded-lg"
+                                />
+
+                                <div className="p-4">
+                                    <h3 className="md:text-xl font-semibold mb-2 capitalize text-blue-900">{route}</h3>
+                                    <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                                    <p className="md:text-xl text-blue-900">
+                                        ₹{vans.find(van => `${van.from_city} to ${van.to_city}` === route)?.fare || 'N/A'}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+
 
             {/* Popular Taxi Tour Packages */}
             <div className="flex justify-center bg-blue-100 md:pb-10 pb-5">
@@ -156,9 +169,17 @@ function AllRoutesPage() {
                                 className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                                 onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
                             >
-                                <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
-                                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                                <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
+                                {/* Smaller Image inside the route card */}
+                                <img
+                                    src="/1702475754Maruti-Dzire--2.png"
+                                    alt="Maruti Dzire"
+                                    className="w-32 h-24 mx-auto object-contain rounded-lg"
+                                />
+                                <div className="p-4">
+                                    <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                                    <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                                    <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -176,9 +197,17 @@ function AllRoutesPage() {
                                 className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                                 onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
                             >
-                                <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
-                                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                                <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
+                                {/* Smaller Image inside the route card */}
+                                <img
+                                    src="/1702475754Maruti-Dzire--2.png"
+                                    alt="Maruti Dzire"
+                                    className="w-32 h-24 mx-auto object-contain rounded-lg"
+                                />
+                                <div className="p-4">
+                                    <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                                    <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                                    <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -196,61 +225,23 @@ function AllRoutesPage() {
                                 className="w-full sm:w-80 lg:w-96 p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center"
                                 onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
                             >
-                                <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
-                                <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                                <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
+                                {/* Smaller Image inside the route card */}
+                                <img
+                                    src="/1702475754Maruti-Dzire--2.png"
+                                    alt="Maruti Dzire"
+                                    className="w-32 h-24 mx-auto object-contain rounded-lg"
+                                />
+                                <div className="p-4">
+                                    <h3 className="md:text-2xl font-semibold mb-2 capitalize text-blue-900">{van.from_city} to {van.to_city}</h3>
+                                    <p className="md:text-lg font-medium mb-2 text-blue-900">Start Fare</p>
+                                    <p className="md:text-2xl text-blue-900">₹{van.fare}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
-
-            {/* getLuxuryCabs */}
-            <div className="flex justify-center bg-blue-100 pb-5 md:pb-10">
-                <div className="text-center md:w-[90em] w-[25em] px-4 md:px-6">
-                    <h2 className="md:text-4xl text-2xl font-bold py-4 text-orange-500 mt-5">
-                        Our Luxury Cabs
-                    </h2>
-                    <p className="text-black">
-                        The Definitive Collection of Chauffeur-Driven Elegance Unparalleled Luxury, Comfort, and Professionalism Await You
-                    </p>
-
-                    {/* Swiper Container */}
-                    <Swiper
-                        spaceBetween={20}
-                        slidesPerView={1}  // Default to 1 slide on mobile
-                        loop={true}
-                        autoplay={{
-                            delay: 3000,
-                            disableOnInteraction: false,
-                        }}
-                        navigation={true}
-                        modules={[Navigation, Autoplay]}
-                        className="mt-5"
-                        breakpoints={{
-                            640: {
-                                slidesPerView: 4,  // For larger screens (640px and up), show 4 slides
-                            },
-                        }}
-                    >
-                        {/* Swiper Slides */}
-                        {getLuxuryCabs().map((van) => (
-                            <SwiperSlide key={van.id}>
-                                <div
-                                    className="p-4 md:p-6 bg-white shadow-lg rounded-lg cursor-pointer text-center" // Ensure padding is applied correctly
-                                    onClick={() => filterVansByRoute(`${van.from_city} to ${van.to_city}`)}
-                                >
-                                    <h3 className="text-2xl font-semibold mb-2 capitalize text-blue-900">
-                                        {van.from_city} to {van.to_city}
-                                    </h3>
-                                    <p className="text-lg font-medium mb-2 text-blue-900">Start Fare</p>
-                                    <p className="text-2xl text-blue-900">₹{van.fare}</p>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            </div>
+            <LuxuryCabsPage />
         </div>
     );
 }

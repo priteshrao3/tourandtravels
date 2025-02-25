@@ -123,11 +123,11 @@ function SearchPage() {
             {/* Tabs */}
             <div className="bg-blue-500 md:p-4 py-5 md:pt-14">
                 <div className="flex flex-wrap justify-center gap-4">
-                    {['One Way', 'Local', 'Tour', 'Round Trip', 'Tempo Traveller'].map(tab => (
+                    {['One Way', 'Local', 'Tour', 'Round Trip', 'Tempo Traveller', 'Force Urbania'].map(tab => (
                         <button
                             key={tab}
                             className={`px-4 py-2 rounded-lg ${activeTab === tab ? 'bg-blue-600 text-white' : 'bg-white text-black'} 
-                    sm:px-6 sm:py-3 md:px-8 md:py-4`}
+                    sm:px-6 sm:py-3 md:px-12 md:py-2 font-bold`}
                             onClick={() => {
                                 setActiveTab(tab);
                                 setSearchParams({
@@ -186,7 +186,7 @@ function SearchPage() {
                     )}
 
                     {/* Show To City dropdown for relevant tabs */}
-                    {['One Way', 'Tour', 'Round Trip', 'Tempo Traveller'].includes(activeTab) && (
+                    {['One Way', 'Local', 'Tour', 'Round Trip', 'Tempo Traveller', 'Force Urbania'].includes(activeTab) && (
                         <div className="w-full sm:w-auto">
                             <label htmlFor="toCity" className="block text-sm font-bold text-center py-2 bg-white text-gray-700">Select Drop-off City</label>
                             <select
