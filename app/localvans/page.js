@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -8,13 +9,14 @@ import Footer from '../homepage/footer';
 import Features from '../homepage/features';
 import Faq from '../homepage/faq';
 
-export default function SearchResults() {
+function SearchResultsComponent() {
     const searchParams = useSearchParams();
     const fromCity = searchParams.get('fromCity');
     const [vans, setVans] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!fromCity) return;
         const fetchVans = async () => {
             try {
                 const response = await axios.get('https://travelboking.pythonanywhere.com/vans/');
@@ -27,9 +29,7 @@ export default function SearchResults() {
             }
         };
 
-        if (fromCity) {
-            fetchVans();
-        }
+        fetchVans();
     }, [fromCity]);
 
     return (
@@ -105,5 +105,13 @@ export default function SearchResults() {
             <Faq />
             <Footer />
         </div>
+    );
+}
+
+export default function SearchResults() {
+    return (
+        <Suspense fallback={<p className="text-center text-black">Loading...</p>}>
+            <SearchResultsComponent />
+        </Suspense>
     );
 }
