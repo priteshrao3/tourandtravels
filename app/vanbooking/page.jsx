@@ -1,14 +1,13 @@
 'use client';
-import React, { useState, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Footer from '../homepage/footer';
 import NavigationBar from '../homepage/navigationbar';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 
 function VanBooking() {
-    // Wrap the code that uses useSearchParams with Suspense
     const searchParams = useSearchParams();
-    
+
     // Extract query parameters
     const fromCity = searchParams.get('from_city') || '[City Name]';
     const toCity = searchParams.get('to_city') || '[City Name]';
@@ -23,11 +22,23 @@ function VanBooking() {
         date: '',
         time: '',
         message: '',
-        from_city: fromCity,  // added to send with the form
-        to_city: toCity,      // added to send with the form
-        van_name: vanName,    // added to send with the form
-        fare: fare,           // added to send with the form
+        from_city: fromCity, 
+        to_city: toCity,    
+        van_name: vanName,   
+        fare: fare,        
     });
+
+
+    useEffect(() => {
+        const now = new Date();
+        const formattedDate = now.toISOString().split('T')[0];
+        const formattedTime = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+        setFormData(prevData => ({
+            ...prevData,
+            date: formattedDate,
+            time: formattedTime
+        }));
+    }, []);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -40,19 +51,20 @@ function VanBooking() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        
         const dataToSend = {
+            ...formData,
             name: formData.name,
             mobile: formData.mobile,
             email: formData.email,
             pickup_address: formData.pickup_address,
-            pickup_date: formData.date,   // already a string
-            pickup_time: formData.time,   // already a string
+            pickup_date: formData.date, 
+            pickup_time: formData.time,
             message: formData.message,
             from_city: formData.from_city,
             to_city: formData.to_city,
             van_name: formData.van_name,
-            fare: parseFloat(formData.fare), // Ensure fare is a valid number
+            fare: parseFloat(formData.fare),
         };
 
         setLoading(true);  // Start loading indicator
@@ -78,6 +90,7 @@ function VanBooking() {
                     van_name: vanName,
                     fare: fare,
                 });
+                
             } else {
                 setError('Failed to submit: ' + JSON.stringify(response.data));
             }
