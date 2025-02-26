@@ -9,6 +9,7 @@ import Features from '../homepage/features';
 import Faq from '../homepage/faq';
 import Footer from '../homepage/footer';
 import SearchPage from '../homepage/searchpage';
+import AllRoutesPage from '../homepage/allroutes';
 
 const SearchResults = () => {
   const searchParams = useSearchParams();
@@ -44,7 +45,7 @@ const SearchResults = () => {
     <div className="text-black">
       <NavigationBar />
       <SearchPage />
-      
+
       <div className="text-center py-5 pt-10 bg-blue-100">
         <h2 className="md:text-4xl text-2xl text-orange-400 font-bold capitalize">
           {vans[0].from_city} To: {vans[0].to_city}
@@ -64,7 +65,7 @@ const SearchResults = () => {
 
             <div className="taxi-type flex items-center justify-center w-full md:w-1/6 mb-4 md:mb-0">
               <span className="text-lg">
-                <span className="font-bold text-black">Car Type</span> <br /> {van.van_name} <br /> 
+                <span className="font-bold text-black">Car Type</span> <br /> {van.van_name} <br />
                 <span className="font-bold text-blue-500">More Details</span>
               </span>
             </div>
@@ -105,9 +106,30 @@ const SearchResults = () => {
         ))}
       </div>
 
-      <div className='mt-5'></div>
-      <p className='text-orange-400 font-bold text-3xl text-center p-5'>Visitors Guide</p>
-      <p className='text-orange-400 font-bold text-3xl text-center p-5'>Terms & Condition</p>
+      <AllRoutesPage />
+
+      <div className="flex flex-col items-center text-center mt-5 p-5">
+        <p className="text-orange-400 font-bold text-3xl">Visitors Guide</p>
+        <p className="text-gray-600 md:px-20 mt-3">
+          Welcome to our platform! Our website is designed to provide a seamless and user-friendly
+          experience. You can explore various sections, access services, and find detailed information
+          effortlessly. Navigate through our intuitive menus, search for specific content, and utilize
+          our resources to maximize your experience. Whether you're here for information, services, or
+          support, we have everything organized for your convenience. If you need any assistance, feel
+          free to reach out through our contact section. Enjoy your visit!
+        </p>
+
+        <p className="text-orange-400 font-bold mt-10">Terms & Conditions</p>
+        <p className="text-gray-600 md:px-20 mt-3">
+          By using our platform, you agree to comply with our terms and conditions. These terms ensure
+          a safe and fair environment for all users. We expect responsible usage, adherence to
+          guidelines, and respect for our policies. Any misuse or violation may lead to restricted
+          access or legal actions. Our terms cover privacy policies, user conduct, and content
+          regulations. We reserve the right to update these terms at any time. Please review them
+          periodically to stay informed. Your continued use signifies your acceptance of any changes.
+          If you have any concerns, contact our support team.
+        </p>
+      </div>
 
       <Features />
       <Faq />
